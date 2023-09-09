@@ -1,0 +1,110 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "Key System", HidePremium = false, SaveConfig = true, IntroEnabled = false })
+
+
+
+
+
+OrionLib:MakeNotification({
+	Name = "Logged in!",
+	Content = "You are logged in as "..Player.Name.." ",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+_G.Key = "UniversalScriptIsAwesome!"
+_G.KeyInput = "string"
+
+
+
+
+
+function MakeScriptHub()
+    local Window = OrionLib:MakeWindow({Name = "Universal Script Hub!", HidePremium = false, SaveConfig = true, IntroEnabled = true, IntroText ="Universal Script Hub!" })
+
+    local MainTab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+    })
+end
+
+  
+
+
+
+
+
+
+function CorrectKeyNotifcation()
+    OrionLib:MakeNotification({
+        Name = "Correct Key!",
+        Content = "You have entered the correct key!",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+
+
+
+end
+
+function IncorrectKeyNotifcation()
+    OrionLib:MakeNotification({
+        Name = "Incorrect Key!",
+        Content = "You have entered the incorrect key!",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end 
+
+local Tab = Window:MakeTab({
+	Name = "Key",
+	Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Tab1 = Window:MakeTab({
+	Name = "Website!",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+    
+})
+
+Tab1:AddTextbox({
+	Name = "Website",
+	Default = "https://link-target.net/954398/key",
+	TextDisappear = true,
+	Callback = function(Value)
+		print(Value)
+	end	  
+})
+
+
+
+
+
+
+Tab:AddTextbox({
+	Name = "Enter Key",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+        _G.KeyInput = Value
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Check Key",
+	Callback = function()
+      	    if _G.KeyInput == _G.Key then 
+            MakeScriptHub()
+            CorrectKeyNotifcation()
+            enter()
+            else 
+                 IncorrectKeyNotifcation()
+            end
+
+  	end    
+})
+OrionLib:Init()
